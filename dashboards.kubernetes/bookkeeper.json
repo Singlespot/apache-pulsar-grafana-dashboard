@@ -3990,7 +3990,7 @@
         "options": [],
         "query": "bookkeeper_server_ADD_ENTRY{job=~\".+\"}",
         "refresh": 2,
-        "regex": "/.*[^_]job=\\\"(bookie)\\\".*/",
+        "regex": "/.*[^_]job=\\\"(bookie|bookkeeper)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -4063,5 +4063,5 @@
   "variables": {
     "list": []
   },
-  "version": 4
+  "version": 1
 }
