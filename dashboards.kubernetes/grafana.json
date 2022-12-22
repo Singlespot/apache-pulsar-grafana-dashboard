@@ -51,7 +51,7 @@
         "rgb(234, 245, 234)",
         "rgb(235, 244, 235)"
       ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 0,
       "format": "none",
       "gauge": {
@@ -134,7 +134,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -216,7 +216,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -298,7 +298,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -373,7 +373,7 @@
     },
     {
       "columns": [],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fontSize": "100%",
       "gridPos": {
         "h": 5,
@@ -451,7 +451,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "gridPos": {
         "h": 10,
@@ -544,7 +544,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "gridPos": {
         "h": 10,
@@ -646,7 +646,7 @@
     },
     {
       "columns": [],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fontSize": "100%",
       "gridPos": {
         "h": 10,
@@ -710,7 +710,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "gridPos": {
         "h": 5,
@@ -801,7 +801,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "gridPos": {
         "h": 5,
@@ -892,7 +892,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "Aggregated over all Grafana nodes.",
       "fill": 1,
       "gridPos": {

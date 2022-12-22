@@ -591,7 +591,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 5,
       "gridPos": {
         "h": 7,
@@ -1466,7 +1466,7 @@
           "text": "pulsar",
           "value": "pulsar"
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": "prometheus",
         "definition": "",
         "hide": 0,
         "includeAll": false,
@@ -1491,7 +1491,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": "prometheus",
         "definition": "",
         "hide": 0,
         "includeAll": true,

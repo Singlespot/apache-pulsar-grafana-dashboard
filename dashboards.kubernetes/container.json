@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS_TEST-CLUSTER",
-      "label": "{{ PULSAR_CLUSTER }}",
+      "name": "DS_PROMETHEUS",
+      "label": "prometheus",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -71,8 +71,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-0",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-0"
+          "text": "prometheus-bookie-0",
+          "value": "prometheus-bookie-0"
         }
       },
       "title": "$pod",
@@ -83,7 +83,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -118,8 +118,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-0",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-0"
+          "text": "prometheus-bookie-0",
+          "value": "prometheus-bookie-0"
         }
       },
       "seriesOverrides": [],
@@ -128,19 +128,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\", container!=\"\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\", container!=\"\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\", container!=\"\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -202,7 +202,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -239,8 +239,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-0",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-0"
+          "text": "prometheus-bookie-0",
+          "value": "prometheus-bookie-0"
         }
       },
       "seriesOverrides": [],
@@ -249,25 +249,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\", container_name!=\"\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\", container!=\"\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\", container_name!=\"\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\", container!=\"\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\", container_name!=\"\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\", container!=\"\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\", container_name!=\"\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\", container!=\"\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -319,7 +319,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -353,8 +353,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-0",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-0"
+          "text": "prometheus-bookie-0",
+          "value": "prometheus-bookie-0"
         }
       },
       "seriesOverrides": [
@@ -372,13 +372,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\", container!=\"\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\", container!=\"\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -431,7 +431,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -465,8 +465,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-0",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-0"
+          "text": "prometheus-bookie-0",
+          "value": "prometheus-bookie-0"
         }
       },
       "seriesOverrides": [
@@ -484,13 +484,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\", container!=\"\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\", container!=\"\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -555,8 +555,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-1",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-1"
+          "text": "prometheus-bookie-1",
+          "value": "prometheus-bookie-1"
         }
       },
       "title": "$pod",
@@ -567,7 +567,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -605,8 +605,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-1",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-1"
+          "text": "prometheus-bookie-1",
+          "value": "prometheus-bookie-1"
         }
       },
       "seriesOverrides": [],
@@ -615,19 +615,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -689,7 +689,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -729,8 +729,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-1",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-1"
+          "text": "prometheus-bookie-1",
+          "value": "prometheus-bookie-1"
         }
       },
       "seriesOverrides": [],
@@ -739,25 +739,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -809,7 +809,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -846,8 +846,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-1",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-1"
+          "text": "prometheus-bookie-1",
+          "value": "prometheus-bookie-1"
         }
       },
       "seriesOverrides": [
@@ -865,13 +865,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -924,7 +924,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -961,8 +961,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-1",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-1"
+          "text": "prometheus-bookie-1",
+          "value": "prometheus-bookie-1"
         }
       },
       "seriesOverrides": [
@@ -980,13 +980,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -1051,8 +1051,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-2",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-2"
+          "text": "prometheus-bookie-2",
+          "value": "prometheus-bookie-2"
         }
       },
       "title": "$pod",
@@ -1063,7 +1063,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -1101,8 +1101,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-2",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-2"
+          "text": "prometheus-bookie-2",
+          "value": "prometheus-bookie-2"
         }
       },
       "seriesOverrides": [],
@@ -1111,19 +1111,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -1185,7 +1185,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1225,8 +1225,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-2",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-2"
+          "text": "prometheus-bookie-2",
+          "value": "prometheus-bookie-2"
         }
       },
       "seriesOverrides": [],
@@ -1235,25 +1235,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -1305,7 +1305,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1342,8 +1342,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-2",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-2"
+          "text": "prometheus-bookie-2",
+          "value": "prometheus-bookie-2"
         }
       },
       "seriesOverrides": [
@@ -1361,13 +1361,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -1420,7 +1420,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1457,8 +1457,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-2",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-2"
+          "text": "prometheus-bookie-2",
+          "value": "prometheus-bookie-2"
         }
       },
       "seriesOverrides": [
@@ -1476,13 +1476,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -1547,8 +1547,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-3",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-3"
+          "text": "prometheus-bookie-3",
+          "value": "prometheus-bookie-3"
         }
       },
       "title": "$pod",
@@ -1559,7 +1559,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -1597,8 +1597,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-3",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-3"
+          "text": "prometheus-bookie-3",
+          "value": "prometheus-bookie-3"
         }
       },
       "seriesOverrides": [],
@@ -1607,19 +1607,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -1681,7 +1681,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1721,8 +1721,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-3",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-3"
+          "text": "prometheus-bookie-3",
+          "value": "prometheus-bookie-3"
         }
       },
       "seriesOverrides": [],
@@ -1731,25 +1731,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -1801,7 +1801,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1838,8 +1838,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-3",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-3"
+          "text": "prometheus-bookie-3",
+          "value": "prometheus-bookie-3"
         }
       },
       "seriesOverrides": [
@@ -1857,13 +1857,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -1916,7 +1916,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1953,8 +1953,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-3",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-3"
+          "text": "prometheus-bookie-3",
+          "value": "prometheus-bookie-3"
         }
       },
       "seriesOverrides": [
@@ -1972,13 +1972,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -2043,8 +2043,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-4",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-4"
+          "text": "prometheus-bookie-4",
+          "value": "prometheus-bookie-4"
         }
       },
       "title": "$pod",
@@ -2055,7 +2055,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -2093,8 +2093,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-4",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-4"
+          "text": "prometheus-bookie-4",
+          "value": "prometheus-bookie-4"
         }
       },
       "seriesOverrides": [],
@@ -2103,19 +2103,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -2177,7 +2177,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2217,8 +2217,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-4",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-4"
+          "text": "prometheus-bookie-4",
+          "value": "prometheus-bookie-4"
         }
       },
       "seriesOverrides": [],
@@ -2227,25 +2227,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -2297,7 +2297,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2334,8 +2334,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-4",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-4"
+          "text": "prometheus-bookie-4",
+          "value": "prometheus-bookie-4"
         }
       },
       "seriesOverrides": [
@@ -2353,13 +2353,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -2412,7 +2412,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2449,8 +2449,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-4",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-4"
+          "text": "prometheus-bookie-4",
+          "value": "prometheus-bookie-4"
         }
       },
       "seriesOverrides": [
@@ -2468,13 +2468,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -2539,8 +2539,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-5",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-5"
+          "text": "prometheus-bookie-5",
+          "value": "prometheus-bookie-5"
         }
       },
       "title": "$pod",
@@ -2551,7 +2551,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -2589,8 +2589,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-5",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-5"
+          "text": "prometheus-bookie-5",
+          "value": "prometheus-bookie-5"
         }
       },
       "seriesOverrides": [],
@@ -2599,19 +2599,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -2673,7 +2673,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2713,8 +2713,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-5",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-5"
+          "text": "prometheus-bookie-5",
+          "value": "prometheus-bookie-5"
         }
       },
       "seriesOverrides": [],
@@ -2723,25 +2723,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -2793,7 +2793,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2830,8 +2830,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-5",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-5"
+          "text": "prometheus-bookie-5",
+          "value": "prometheus-bookie-5"
         }
       },
       "seriesOverrides": [
@@ -2849,13 +2849,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -2908,7 +2908,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2945,8 +2945,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-bookie-5",
-          "value": "{{ PULSAR_CLUSTER }}-bookie-5"
+          "text": "prometheus-bookie-5",
+          "value": "prometheus-bookie-5"
         }
       },
       "seriesOverrides": [
@@ -2964,13 +2964,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -3035,8 +3035,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-0",
-          "value": "{{ PULSAR_CLUSTER }}-broker-0"
+          "text": "prometheus-broker-0",
+          "value": "prometheus-broker-0"
         }
       },
       "title": "$pod",
@@ -3047,7 +3047,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -3085,8 +3085,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-0",
-          "value": "{{ PULSAR_CLUSTER }}-broker-0"
+          "text": "prometheus-broker-0",
+          "value": "prometheus-broker-0"
         }
       },
       "seriesOverrides": [],
@@ -3095,19 +3095,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -3169,7 +3169,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3209,8 +3209,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-0",
-          "value": "{{ PULSAR_CLUSTER }}-broker-0"
+          "text": "prometheus-broker-0",
+          "value": "prometheus-broker-0"
         }
       },
       "seriesOverrides": [],
@@ -3219,25 +3219,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -3289,7 +3289,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3326,8 +3326,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-0",
-          "value": "{{ PULSAR_CLUSTER }}-broker-0"
+          "text": "prometheus-broker-0",
+          "value": "prometheus-broker-0"
         }
       },
       "seriesOverrides": [
@@ -3345,13 +3345,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -3404,7 +3404,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3441,8 +3441,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-0",
-          "value": "{{ PULSAR_CLUSTER }}-broker-0"
+          "text": "prometheus-broker-0",
+          "value": "prometheus-broker-0"
         }
       },
       "seriesOverrides": [
@@ -3460,13 +3460,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -3531,8 +3531,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-1",
-          "value": "{{ PULSAR_CLUSTER }}-broker-1"
+          "text": "prometheus-broker-1",
+          "value": "prometheus-broker-1"
         }
       },
       "title": "$pod",
@@ -3543,7 +3543,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -3581,8 +3581,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-1",
-          "value": "{{ PULSAR_CLUSTER }}-broker-1"
+          "text": "prometheus-broker-1",
+          "value": "prometheus-broker-1"
         }
       },
       "seriesOverrides": [],
@@ -3591,19 +3591,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -3665,7 +3665,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3705,8 +3705,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-1",
-          "value": "{{ PULSAR_CLUSTER }}-broker-1"
+          "text": "prometheus-broker-1",
+          "value": "prometheus-broker-1"
         }
       },
       "seriesOverrides": [],
@@ -3715,25 +3715,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -3785,7 +3785,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3822,8 +3822,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-1",
-          "value": "{{ PULSAR_CLUSTER }}-broker-1"
+          "text": "prometheus-broker-1",
+          "value": "prometheus-broker-1"
         }
       },
       "seriesOverrides": [
@@ -3841,13 +3841,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -3900,7 +3900,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3937,8 +3937,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-1",
-          "value": "{{ PULSAR_CLUSTER }}-broker-1"
+          "text": "prometheus-broker-1",
+          "value": "prometheus-broker-1"
         }
       },
       "seriesOverrides": [
@@ -3956,13 +3956,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -4027,8 +4027,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-2",
-          "value": "{{ PULSAR_CLUSTER }}-broker-2"
+          "text": "prometheus-broker-2",
+          "value": "prometheus-broker-2"
         }
       },
       "title": "$pod",
@@ -4039,7 +4039,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -4077,8 +4077,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-2",
-          "value": "{{ PULSAR_CLUSTER }}-broker-2"
+          "text": "prometheus-broker-2",
+          "value": "prometheus-broker-2"
         }
       },
       "seriesOverrides": [],
@@ -4087,19 +4087,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -4161,7 +4161,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4201,8 +4201,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-2",
-          "value": "{{ PULSAR_CLUSTER }}-broker-2"
+          "text": "prometheus-broker-2",
+          "value": "prometheus-broker-2"
         }
       },
       "seriesOverrides": [],
@@ -4211,25 +4211,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -4281,7 +4281,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4318,8 +4318,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-2",
-          "value": "{{ PULSAR_CLUSTER }}-broker-2"
+          "text": "prometheus-broker-2",
+          "value": "prometheus-broker-2"
         }
       },
       "seriesOverrides": [
@@ -4337,13 +4337,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -4396,7 +4396,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4433,8 +4433,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-broker-2",
-          "value": "{{ PULSAR_CLUSTER }}-broker-2"
+          "text": "prometheus-broker-2",
+          "value": "prometheus-broker-2"
         }
       },
       "seriesOverrides": [
@@ -4452,13 +4452,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -4523,8 +4523,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng",
-          "value": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng"
+          "text": "prometheus-nginx-ingress-controller-78765d8d5-z46ng",
+          "value": "prometheus-nginx-ingress-controller-78765d8d5-z46ng"
         }
       },
       "title": "$pod",
@@ -4535,7 +4535,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -4573,8 +4573,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng",
-          "value": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng"
+          "text": "prometheus-nginx-ingress-controller-78765d8d5-z46ng",
+          "value": "prometheus-nginx-ingress-controller-78765d8d5-z46ng"
         }
       },
       "seriesOverrides": [],
@@ -4583,19 +4583,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -4657,7 +4657,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4697,8 +4697,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng",
-          "value": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng"
+          "text": "prometheus-nginx-ingress-controller-78765d8d5-z46ng",
+          "value": "prometheus-nginx-ingress-controller-78765d8d5-z46ng"
         }
       },
       "seriesOverrides": [],
@@ -4707,25 +4707,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -4777,7 +4777,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4814,8 +4814,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng",
-          "value": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng"
+          "text": "prometheus-nginx-ingress-controller-78765d8d5-z46ng",
+          "value": "prometheus-nginx-ingress-controller-78765d8d5-z46ng"
         }
       },
       "seriesOverrides": [
@@ -4833,13 +4833,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -4892,7 +4892,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4929,8 +4929,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng",
-          "value": "{{ PULSAR_CLUSTER }}-nginx-ingress-controller-78765d8d5-z46ng"
+          "text": "prometheus-nginx-ingress-controller-78765d8d5-z46ng",
+          "value": "prometheus-nginx-ingress-controller-78765d8d5-z46ng"
         }
       },
       "seriesOverrides": [
@@ -4948,13 +4948,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -5019,8 +5019,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j"
+          "text": "prometheus-node-exporter-jln7j",
+          "value": "prometheus-node-exporter-jln7j"
         }
       },
       "title": "$pod",
@@ -5031,7 +5031,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -5069,8 +5069,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j"
+          "text": "prometheus-node-exporter-jln7j",
+          "value": "prometheus-node-exporter-jln7j"
         }
       },
       "seriesOverrides": [],
@@ -5079,19 +5079,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -5153,7 +5153,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5193,8 +5193,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j"
+          "text": "prometheus-node-exporter-jln7j",
+          "value": "prometheus-node-exporter-jln7j"
         }
       },
       "seriesOverrides": [],
@@ -5203,25 +5203,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -5273,7 +5273,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5310,8 +5310,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j"
+          "text": "prometheus-node-exporter-jln7j",
+          "value": "prometheus-node-exporter-jln7j"
         }
       },
       "seriesOverrides": [
@@ -5329,13 +5329,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -5388,7 +5388,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5425,8 +5425,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-jln7j"
+          "text": "prometheus-node-exporter-jln7j",
+          "value": "prometheus-node-exporter-jln7j"
         }
       },
       "seriesOverrides": [
@@ -5444,13 +5444,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -5515,8 +5515,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj"
+          "text": "prometheus-node-exporter-rgtkj",
+          "value": "prometheus-node-exporter-rgtkj"
         }
       },
       "title": "$pod",
@@ -5527,7 +5527,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -5565,8 +5565,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj"
+          "text": "prometheus-node-exporter-rgtkj",
+          "value": "prometheus-node-exporter-rgtkj"
         }
       },
       "seriesOverrides": [],
@@ -5575,19 +5575,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -5649,7 +5649,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5689,8 +5689,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj"
+          "text": "prometheus-node-exporter-rgtkj",
+          "value": "prometheus-node-exporter-rgtkj"
         }
       },
       "seriesOverrides": [],
@@ -5699,25 +5699,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -5769,7 +5769,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5806,8 +5806,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj"
+          "text": "prometheus-node-exporter-rgtkj",
+          "value": "prometheus-node-exporter-rgtkj"
         }
       },
       "seriesOverrides": [
@@ -5825,13 +5825,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -5884,7 +5884,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5921,8 +5921,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-rgtkj"
+          "text": "prometheus-node-exporter-rgtkj",
+          "value": "prometheus-node-exporter-rgtkj"
         }
       },
       "seriesOverrides": [
@@ -5940,13 +5940,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -6011,8 +6011,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x"
+          "text": "prometheus-node-exporter-sfg7x",
+          "value": "prometheus-node-exporter-sfg7x"
         }
       },
       "title": "$pod",
@@ -6023,7 +6023,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -6061,8 +6061,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x"
+          "text": "prometheus-node-exporter-sfg7x",
+          "value": "prometheus-node-exporter-sfg7x"
         }
       },
       "seriesOverrides": [],
@@ -6071,19 +6071,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -6145,7 +6145,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6185,8 +6185,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x"
+          "text": "prometheus-node-exporter-sfg7x",
+          "value": "prometheus-node-exporter-sfg7x"
         }
       },
       "seriesOverrides": [],
@@ -6195,25 +6195,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -6265,7 +6265,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6302,8 +6302,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x"
+          "text": "prometheus-node-exporter-sfg7x",
+          "value": "prometheus-node-exporter-sfg7x"
         }
       },
       "seriesOverrides": [
@@ -6321,13 +6321,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -6380,7 +6380,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6417,8 +6417,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x",
-          "value": "{{ PULSAR_CLUSTER }}-node-exporter-sfg7x"
+          "text": "prometheus-node-exporter-sfg7x",
+          "value": "prometheus-node-exporter-sfg7x"
         }
       },
       "seriesOverrides": [
@@ -6436,13 +6436,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -6507,8 +6507,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-0",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-0"
+          "text": "prometheus-proxy-0",
+          "value": "prometheus-proxy-0"
         }
       },
       "title": "$pod",
@@ -6519,7 +6519,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -6557,8 +6557,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-0",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-0"
+          "text": "prometheus-proxy-0",
+          "value": "prometheus-proxy-0"
         }
       },
       "seriesOverrides": [],
@@ -6567,19 +6567,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -6641,7 +6641,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6681,8 +6681,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-0",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-0"
+          "text": "prometheus-proxy-0",
+          "value": "prometheus-proxy-0"
         }
       },
       "seriesOverrides": [],
@@ -6691,25 +6691,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -6761,7 +6761,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6798,8 +6798,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-0",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-0"
+          "text": "prometheus-proxy-0",
+          "value": "prometheus-proxy-0"
         }
       },
       "seriesOverrides": [
@@ -6817,13 +6817,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -6876,7 +6876,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6913,8 +6913,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-0",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-0"
+          "text": "prometheus-proxy-0",
+          "value": "prometheus-proxy-0"
         }
       },
       "seriesOverrides": [
@@ -6932,13 +6932,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -7003,8 +7003,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-1",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-1"
+          "text": "prometheus-proxy-1",
+          "value": "prometheus-proxy-1"
         }
       },
       "title": "$pod",
@@ -7015,7 +7015,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -7053,8 +7053,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-1",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-1"
+          "text": "prometheus-proxy-1",
+          "value": "prometheus-proxy-1"
         }
       },
       "seriesOverrides": [],
@@ -7063,19 +7063,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -7137,7 +7137,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7177,8 +7177,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-1",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-1"
+          "text": "prometheus-proxy-1",
+          "value": "prometheus-proxy-1"
         }
       },
       "seriesOverrides": [],
@@ -7187,25 +7187,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -7257,7 +7257,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7294,8 +7294,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-1",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-1"
+          "text": "prometheus-proxy-1",
+          "value": "prometheus-proxy-1"
         }
       },
       "seriesOverrides": [
@@ -7313,13 +7313,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -7372,7 +7372,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7409,8 +7409,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-1",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-1"
+          "text": "prometheus-proxy-1",
+          "value": "prometheus-proxy-1"
         }
       },
       "seriesOverrides": [
@@ -7428,13 +7428,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -7499,8 +7499,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-2",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-2"
+          "text": "prometheus-proxy-2",
+          "value": "prometheus-proxy-2"
         }
       },
       "title": "$pod",
@@ -7511,7 +7511,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -7549,8 +7549,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-2",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-2"
+          "text": "prometheus-proxy-2",
+          "value": "prometheus-proxy-2"
         }
       },
       "seriesOverrides": [],
@@ -7559,19 +7559,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -7633,7 +7633,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7673,8 +7673,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-2",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-2"
+          "text": "prometheus-proxy-2",
+          "value": "prometheus-proxy-2"
         }
       },
       "seriesOverrides": [],
@@ -7683,25 +7683,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -7753,7 +7753,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7790,8 +7790,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-2",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-2"
+          "text": "prometheus-proxy-2",
+          "value": "prometheus-proxy-2"
         }
       },
       "seriesOverrides": [
@@ -7809,13 +7809,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -7868,7 +7868,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7905,8 +7905,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-proxy-2",
-          "value": "{{ PULSAR_CLUSTER }}-proxy-2"
+          "text": "prometheus-proxy-2",
+          "value": "prometheus-proxy-2"
         }
       },
       "seriesOverrides": [
@@ -7924,13 +7924,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -7995,8 +7995,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-recovery-0",
-          "value": "{{ PULSAR_CLUSTER }}-recovery-0"
+          "text": "prometheus-recovery-0",
+          "value": "prometheus-recovery-0"
         }
       },
       "title": "$pod",
@@ -8007,7 +8007,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -8045,8 +8045,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-recovery-0",
-          "value": "{{ PULSAR_CLUSTER }}-recovery-0"
+          "text": "prometheus-recovery-0",
+          "value": "prometheus-recovery-0"
         }
       },
       "seriesOverrides": [],
@@ -8055,19 +8055,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -8129,7 +8129,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -8169,8 +8169,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-recovery-0",
-          "value": "{{ PULSAR_CLUSTER }}-recovery-0"
+          "text": "prometheus-recovery-0",
+          "value": "prometheus-recovery-0"
         }
       },
       "seriesOverrides": [],
@@ -8179,25 +8179,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -8249,7 +8249,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -8286,8 +8286,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-recovery-0",
-          "value": "{{ PULSAR_CLUSTER }}-recovery-0"
+          "text": "prometheus-recovery-0",
+          "value": "prometheus-recovery-0"
         }
       },
       "seriesOverrides": [
@@ -8305,13 +8305,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -8364,7 +8364,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -8401,8 +8401,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-recovery-0",
-          "value": "{{ PULSAR_CLUSTER }}-recovery-0"
+          "text": "prometheus-recovery-0",
+          "value": "prometheus-recovery-0"
         }
       },
       "seriesOverrides": [
@@ -8420,13 +8420,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -8491,8 +8491,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-0",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-0"
+          "text": "prometheus-zookeeper-0",
+          "value": "prometheus-zookeeper-0"
         }
       },
       "title": "$pod",
@@ -8503,7 +8503,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -8541,8 +8541,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-0",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-0"
+          "text": "prometheus-zookeeper-0",
+          "value": "prometheus-zookeeper-0"
         }
       },
       "seriesOverrides": [],
@@ -8551,19 +8551,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -8625,7 +8625,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -8665,8 +8665,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-0",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-0"
+          "text": "prometheus-zookeeper-0",
+          "value": "prometheus-zookeeper-0"
         }
       },
       "seriesOverrides": [],
@@ -8675,25 +8675,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -8745,7 +8745,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -8782,8 +8782,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-0",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-0"
+          "text": "prometheus-zookeeper-0",
+          "value": "prometheus-zookeeper-0"
         }
       },
       "seriesOverrides": [
@@ -8801,13 +8801,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -8860,7 +8860,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -8897,8 +8897,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-0",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-0"
+          "text": "prometheus-zookeeper-0",
+          "value": "prometheus-zookeeper-0"
         }
       },
       "seriesOverrides": [
@@ -8916,13 +8916,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -8987,8 +8987,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-1",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-1"
+          "text": "prometheus-zookeeper-1",
+          "value": "prometheus-zookeeper-1"
         }
       },
       "title": "$pod",
@@ -8999,7 +8999,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -9037,8 +9037,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-1",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-1"
+          "text": "prometheus-zookeeper-1",
+          "value": "prometheus-zookeeper-1"
         }
       },
       "seriesOverrides": [],
@@ -9047,19 +9047,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -9121,7 +9121,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9161,8 +9161,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-1",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-1"
+          "text": "prometheus-zookeeper-1",
+          "value": "prometheus-zookeeper-1"
         }
       },
       "seriesOverrides": [],
@@ -9171,25 +9171,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -9241,7 +9241,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9278,8 +9278,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-1",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-1"
+          "text": "prometheus-zookeeper-1",
+          "value": "prometheus-zookeeper-1"
         }
       },
       "seriesOverrides": [
@@ -9297,13 +9297,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -9356,7 +9356,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9393,8 +9393,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-1",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-1"
+          "text": "prometheus-zookeeper-1",
+          "value": "prometheus-zookeeper-1"
         }
       },
       "seriesOverrides": [
@@ -9412,13 +9412,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -9483,8 +9483,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-2",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-2"
+          "text": "prometheus-zookeeper-2",
+          "value": "prometheus-zookeeper-2"
         }
       },
       "title": "$pod",
@@ -9495,7 +9495,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
@@ -9533,8 +9533,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-2",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-2"
+          "text": "prometheus-zookeeper-2",
+          "value": "prometheus-zookeeper-2"
         }
       },
       "seriesOverrides": [],
@@ -9543,19 +9543,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -9617,7 +9617,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9657,8 +9657,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-2",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-2"
+          "text": "prometheus-zookeeper-2",
+          "value": "prometheus-zookeeper-2"
         }
       },
       "seriesOverrides": [],
@@ -9667,25 +9667,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\"}) by (pod)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -9737,7 +9737,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9774,8 +9774,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-2",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-2"
+          "text": "prometheus-zookeeper-2",
+          "value": "prometheus-zookeeper-2"
         }
       },
       "seriesOverrides": [
@@ -9793,13 +9793,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -9852,7 +9852,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9889,8 +9889,8 @@
       "scopedVars": {
         "pod": {
           "selected": false,
-          "text": "{{ PULSAR_CLUSTER }}-zookeeper-2",
-          "value": "{{ PULSAR_CLUSTER }}-zookeeper-2"
+          "text": "prometheus-zookeeper-2",
+          "value": "prometheus-zookeeper-2"
         }
       },
       "seriesOverrides": [
@@ -9908,13 +9908,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\"}[5m])) by (pod,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -9976,8 +9976,8 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "label_values(up{app=\"pulsar\"}, kubernetes_pod_name)",
+        "datasource": "prometheus",
+        "definition": "label_values(up{app=\"sn-platform\"}, pod)",
         "hide": 0,
         "includeAll": true,
         "index": -1,
@@ -9985,7 +9985,7 @@
         "multi": true,
         "name": "pod",
         "options": [],
-        "query": "label_values(up{app=\"pulsar\"}, kubernetes_pod_name)",
+        "query": "label_values(up{app=\"sn-platform\"}, pod)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,

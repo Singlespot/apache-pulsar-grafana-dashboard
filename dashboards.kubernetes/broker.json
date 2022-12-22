@@ -2,7 +2,7 @@
   "__inputs": [
     {
       "name": "DS_default",
-      "label": "{{ PULSAR_CLUSTER }}",
+      "label": "prometheus",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -55,7 +55,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 0,
       "fillGradient": 0,
@@ -93,9 +93,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", pod=~\"$broker\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -145,7 +145,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "description": "",
       "fill": 0,
@@ -184,9 +184,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_rate_out{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_rate_out{cluster=~\"$cluster\", pod=~\"$broker\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -236,7 +236,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 0,
       "fillGradient": 0,
@@ -274,9 +274,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", pod=~\"$broker\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -326,7 +326,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 0,
       "fillGradient": 0,
@@ -364,9 +364,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_throughput_out{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_throughput_out{cluster=~\"$cluster\", pod=~\"$broker\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -416,7 +416,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 0,
       "fillGradient": 0,
@@ -454,9 +454,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", pod=~\"$broker\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -506,7 +506,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 0,
       "fillGradient": 0,
@@ -544,9 +544,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)  ",
+          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", pod=~\"$broker\"}) by (pod)  ",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -596,7 +596,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 0,
       "fillGradient": 0,
@@ -634,9 +634,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)  ",
+          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", pod=~\"$broker\"}) by (pod)  ",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -686,7 +686,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 0,
       "fillGradient": 0,
@@ -724,9 +724,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", pod=~\"$broker\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -789,7 +789,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 5,
       "fillGradient": 0,
       "gridPos": {
@@ -831,61 +831,61 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "0 - 0.5 ms",
           "refId": "A"
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "0.5 - 1 ms",
           "refId": "B"
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "1 - 5 ms",
           "refId": "C"
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "5 - 10 ms",
           "refId": "D"
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "10 - 20 ms",
           "refId": "E"
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "20 - 50 ms",
           "refId": "F"
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "50 - 100 ms",
           "refId": "G"
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "100 - 200 ms",
           "refId": "H"
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "200 ms - 1 s",
           "refId": "I"
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", pod=~\"$broker\"}) / 60.0",
           "interval": "",
           "legendFormat": "> 1 s",
           "refId": "J"
@@ -937,7 +937,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 0,
       "fillGradient": 0,
@@ -975,9 +975,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_broker_publish_latency{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_broker_publish_latency{cluster=~\"$cluster\", pod=~\"$broker\", quantile=\"0.5\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -1027,7 +1027,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "description": "",
       "fill": 0,
@@ -1066,9 +1066,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_broker_publish_latency{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_broker_publish_latency{cluster=~\"$cluster\", pod=~\"$broker\", quantile=\"0.99\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -1118,7 +1118,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "description": "",
       "fill": 0,
@@ -1157,9 +1157,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_broker_publish_latency{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", quantile=\"0.999\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_broker_publish_latency{cluster=~\"$cluster\", pod=~\"$broker\", quantile=\"0.999\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -1209,7 +1209,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "decimals": 1,
       "description": "",
       "fill": 0,
@@ -1248,9 +1248,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_broker_publish_latency{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", quantile=\"1.0\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_broker_publish_latency{cluster=~\"$cluster\", pod=~\"$broker\", quantile=\"1.0\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -1322,7 +1322,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1368,9 +1368,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -1421,7 +1421,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1466,9 +1466,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -1518,7 +1518,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -1564,9 +1564,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -1616,7 +1616,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -1662,9 +1662,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -1714,7 +1714,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -1760,9 +1760,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -1812,7 +1812,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -1858,9 +1858,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -1934,7 +1934,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1983,9 +1983,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2036,7 +2036,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2084,9 +2084,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2136,7 +2136,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -2185,9 +2185,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2237,7 +2237,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -2286,9 +2286,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2338,7 +2338,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -2387,9 +2387,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2439,7 +2439,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -2488,9 +2488,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2564,7 +2564,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2613,9 +2613,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2666,7 +2666,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2714,9 +2714,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2766,7 +2766,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -2815,9 +2815,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2867,7 +2867,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -2916,9 +2916,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2968,7 +2968,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -3017,9 +3017,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3069,7 +3069,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -3118,9 +3118,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3194,7 +3194,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3243,9 +3243,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3296,7 +3296,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3344,9 +3344,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3396,7 +3396,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -3445,9 +3445,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3497,7 +3497,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -3546,9 +3546,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3598,7 +3598,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -3647,9 +3647,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3699,7 +3699,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -3748,9 +3748,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3824,7 +3824,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3873,9 +3873,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3926,7 +3926,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3974,9 +3974,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4026,7 +4026,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -4075,9 +4075,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4127,7 +4127,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -4176,9 +4176,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4228,7 +4228,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -4277,9 +4277,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4329,7 +4329,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -4378,9 +4378,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4454,7 +4454,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4503,9 +4503,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4556,7 +4556,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4604,9 +4604,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4656,7 +4656,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -4705,9 +4705,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4757,7 +4757,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -4806,9 +4806,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4858,7 +4858,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -4907,9 +4907,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -4959,7 +4959,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -5008,9 +5008,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -5084,7 +5084,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5133,9 +5133,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -5186,7 +5186,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5234,9 +5234,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -5286,7 +5286,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -5335,9 +5335,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -5387,7 +5387,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -5436,9 +5436,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -5488,7 +5488,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -5537,9 +5537,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -5589,7 +5589,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -5638,9 +5638,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -5714,7 +5714,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5763,9 +5763,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -5816,7 +5816,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5864,9 +5864,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -5916,7 +5916,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -5965,9 +5965,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6017,7 +6017,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -6066,9 +6066,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6118,7 +6118,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -6167,9 +6167,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6219,7 +6219,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -6268,9 +6268,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6344,7 +6344,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6393,9 +6393,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6446,7 +6446,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6494,9 +6494,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6546,7 +6546,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -6595,9 +6595,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6647,7 +6647,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -6696,9 +6696,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6748,7 +6748,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -6797,9 +6797,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6849,7 +6849,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -6898,9 +6898,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -6974,7 +6974,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7023,9 +7023,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -7076,7 +7076,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7124,9 +7124,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -7176,7 +7176,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -7225,9 +7225,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -7277,7 +7277,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -7326,9 +7326,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -7378,7 +7378,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -7427,9 +7427,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -7479,7 +7479,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -7528,9 +7528,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -7604,7 +7604,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7653,9 +7653,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}",
+          "expr": "caffeine_cache_estimated_size{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -7706,7 +7706,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7754,9 +7754,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -7806,7 +7806,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -7855,9 +7855,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -7907,7 +7907,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -7956,9 +7956,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -8008,7 +8008,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -8057,9 +8057,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -8109,7 +8109,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": "prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -8158,9 +8158,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -8219,7 +8219,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": "prometheus",
         "definition": "{cluster=~\".+\"}",
         "hide": 0,
         "includeAll": true,
@@ -8247,8 +8247,8 @@
             "$__all"
           ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "pulsar_rate_in{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "datasource": "prometheus",
+        "definition": "pulsar_rate_in{cluster=~\"$cluster\", pod=~\".+\"}",
         "hide": 0,
         "includeAll": true,
         "index": -1,
@@ -8256,9 +8256,9 @@
         "multi": true,
         "name": "broker",
         "options": [],
-        "query": "pulsar_rate_in{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "query": "pulsar_rate_in{cluster=~\"$cluster\", pod=~\".+\"}",
         "refresh": 2,
-        "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]pod=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -8275,8 +8275,8 @@
             "$__all"
           ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}",
+        "datasource": "prometheus",
+        "definition": "caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\"}",
         "hide": 1,
         "includeAll": true,
         "index": -1,
@@ -8284,7 +8284,7 @@
         "multi": true,
         "name": "cache",
         "options": [],
-        "query": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}",
+        "query": "caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\"}",
         "refresh": 2,
         "regex": "/.*[^_]cache=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
