@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
-# export PULSAR_PROMETHEUS_URL=PULSAR_PROMETHEUS_URL
+export PULSAR_PROMETHEUS_URL=PULSAR_PROMETHEUS_URL
 export PULSAR_CLUSTER=prometheus
-# export PULSAR_CUSTOM_PROMETHEUS=yes
-# export GF_LOKI_URL=GF_LOKI_URL
+export PULSAR_CUSTOM_PROMETHEUS=yes
+export GF_LOKI_URL=GF_LOKI_URL
 export GF_LOKI_DATASOURCE_NAME=Loki
 
 DASHBOARD_HOME=dashboards.kubernetes
 
-# scripts/generate_dashboards.sh
+scripts/generate_dashboards.sh
+mv target/dashboards/zookeeper-3.6.json ${DASHBOARD_HOME}/
 #rm -rf ${DASHBOARD_HOME}
 #mkdir -p ${DASHBOARD_HOME}
 #cp apache-pulsar-grafana-dashboard/dashboards.kubernetes/* ${DASHBOARD_HOME}

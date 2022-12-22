@@ -1,7 +1,7 @@
 {%- if PULSAR_CUSTOM_PROMETHEUS not in [ '','no','No','NO','na','NA','false','False','0' ] %}
 {#-
 If custom change "instance" key to "pod"
-This will make graph ledgends display the pod name instead of IP and port information
+This will make graph legends display the pod name instead of IP and port information
 #}
   {%- set CONTEXT = "pod" %}
 {%- else %}
