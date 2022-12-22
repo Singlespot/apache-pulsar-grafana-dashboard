@@ -132,7 +132,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "znode_count{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "znode_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -141,7 +141,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "A"
         },
         {
-          "expr": "ephemerals_count{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "ephemerals_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -233,7 +233,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(znode_count{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(znode_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -242,7 +242,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "A"
         },
         {
-          "expr": "rate(ephemerals_count{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(ephemerals_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -336,7 +336,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "pluginVersion": "6.2.2",
       "targets": [
         {
-          "expr": "global_sessions{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "global_sessions{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 2,
@@ -392,7 +392,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "pluginVersion": "6.2.2",
       "targets": [
         {
-          "expr": "local_sessions{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "local_sessions{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}}",
@@ -442,7 +442,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "write_per_namespace_sum{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "write_per_namespace_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} write_per_namespace:{{'{{key}}'}}",
@@ -528,7 +528,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "read_per_namespace_sum{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "read_per_namespace_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -615,7 +615,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "approximate_data_size{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "approximate_data_size{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{'{{instance}}'}} approximate_data_size",
@@ -701,7 +701,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "packets_received{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "packets_received{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} packets_received",
@@ -787,7 +787,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "packets_sent{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "packets_sent{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} packets_sent",
@@ -873,28 +873,28 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "response_packet_cache_misses{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "response_packet_cache_misses{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} response_packet_cache_misses",
           "refId": "A"
         },
         {
-          "expr": "response_packet_cache_hits{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "response_packet_cache_hits{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} response_packet_cache_hits",
           "refId": "B"
         },
         {
-          "expr": "response_packet_get_children_cache_misses{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "response_packet_get_children_cache_misses{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} response_packet_get_children_cache_misses",
           "refId": "C"
         },
         {
-          "expr": "response_packet_get_children_cache_hits{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "response_packet_get_children_cache_hits{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} response_packet_get_children_cache_hits",
@@ -980,7 +980,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "unrecoverable_error_count{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "unrecoverable_error_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} unrecoverable_error_count",
@@ -1067,7 +1067,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "digest_mismatches_count{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "digest_mismatches_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} digest_mismatches_count",
@@ -1169,7 +1169,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "B"
         },
         {
-          "expr": "startup_snap_load_time_sum{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "startup_snap_load_time_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} startup_snap_load_time",
@@ -1271,7 +1271,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "B"
         },
         {
-          "expr": "startup_txns_loaded_sum{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "startup_txns_loaded_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} startup_txns_loaded",
@@ -1373,7 +1373,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "B"
         },
         {
-          "expr": "dbinittime_sum{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "dbinittime_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} db_init_time",
@@ -1496,7 +1496,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(quorum_size{instance=~\"$instance\",job=~\"$job\"})",
+              "expr": "max(quorum_size{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "quorum_size",
@@ -1581,7 +1581,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "tableColumn": "",
           "targets": [
             {
-              "expr": "leader_uptime{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "leader_uptime{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{'{{instance}}'}}",
@@ -1666,7 +1666,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "tableColumn": "",
           "targets": [
             {
-              "expr": "leader_uptime{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "leader_uptime{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{'{{instance}}'}} leader_uptime",
@@ -1730,21 +1730,21 @@ This will make graph legends display the pod name instead of IP and port informa
           "pluginVersion": "6.2.2",
           "targets": [
             {
-              "expr": "max(learners{instance=~\"$instance\",job=~\"$job\"})",
+              "expr": "max(learners{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "learners",
               "refId": "B"
             },
             {
-              "expr": "max(synced_non_voting_followers{instance=~\"$instance\",job=~\"$job\"})",
+              "expr": "max(synced_non_voting_followers{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "synced_non_voting_followers",
               "refId": "C"
             },
             {
-              "expr": "max(synced_observers{instance=~\"$instance\",job=~\"$job\"})",
+              "expr": "max(synced_observers{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "synced_observers",
@@ -1804,7 +1804,7 @@ This will make graph legends display the pod name instead of IP and port informa
               "refId": "A"
             },
             {
-              "expr": "election_time_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "election_time_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -1812,7 +1812,7 @@ This will make graph legends display the pod name instead of IP and port informa
               "refId": "B"
             },
             {
-              "expr": "election_time_sum{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "election_time_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -1820,7 +1820,7 @@ This will make graph legends display the pod name instead of IP and port informa
               "refId": "C"
             },
             {
-              "expr": "election_time_sum/election_time_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "election_time_sum/election_time_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -1907,7 +1907,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "uptime{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "uptime{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{'{{instance}}'}} uptime",
@@ -1993,7 +1993,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "learner_commit_received_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "learner_commit_received_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} learner_commit_received_count",
@@ -2079,7 +2079,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "commit_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "commit_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} commit_count",
@@ -2165,7 +2165,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "snap_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "snap_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} snap_count",
@@ -2251,7 +2251,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "diff_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "diff_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} diff_count",
@@ -2337,7 +2337,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "looking_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "looking_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} looking_count",
@@ -2423,7 +2423,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "proposal_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "proposal_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} proposal_count",
@@ -2509,21 +2509,21 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "last_proposal_size{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "last_proposal_size{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} last_proposal_size",
               "refId": "A"
             },
             {
-              "expr": "max_proposal_size{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "max_proposal_size{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} max_proposal_size",
               "refId": "B"
             },
             {
-              "expr": "min_proposal_size{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "min_proposal_size{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} min_proposal_size",
@@ -2609,7 +2609,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(follower_sync_time_sum{instance=~\"$instance\",job=~\"$job\"}[1m])",
+              "expr": "rate(follower_sync_time_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[1m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} follower_sync_time",
@@ -2695,7 +2695,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "learner_handler_qp_size_sum{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "learner_handler_qp_size_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} learner_handler_qp_size_sum sid:{{'{{key}}'}}",
@@ -2781,7 +2781,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "quit_leading_due_to_disloyal_voter{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "quit_leading_due_to_disloyal_voter{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} quit_leading_due_to_disloyal_voter",
@@ -2867,14 +2867,14 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(om_commit_process_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+              "expr": "rate(om_commit_process_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} om_commit_process_time",
               "refId": "C"
             },
             {
-              "expr": "rate(om_proposal_process_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+              "expr": "rate(om_proposal_process_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} om_proposal_process_time",
@@ -2974,7 +2974,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "watch_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "watch_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} watch_count",
@@ -3060,7 +3060,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_changed_watch_count_sum{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "node_changed_watch_count_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} node_changed_watch_count",
@@ -3146,7 +3146,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_children_watch_count_sum{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "node_children_watch_count_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} node_children_watch_count",
@@ -3232,7 +3232,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_deleted_watch_count_sum{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "node_deleted_watch_count_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} node_deleted_watch_count",
@@ -3318,7 +3318,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_created_watch_count_sum{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "node_created_watch_count_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} node_created_watch_count",
@@ -3404,7 +3404,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "revalidate_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "revalidate_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} revalidate_count",
@@ -3490,7 +3490,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "stale_sessions_expired{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "stale_sessions_expired{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{'{{instance}}'}} stale_sessions_expired",
@@ -3576,21 +3576,21 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "dead_watchers_cleared{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "dead_watchers_cleared{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} dead_watchers_cleared",
               "refId": "A"
             },
             {
-              "expr": "dead_watchers_queued{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "dead_watchers_queued{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} dead_watchers_queued",
               "refId": "B"
             },
             {
-              "expr": "rate(dead_watchers_cleaner_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+              "expr": "rate(dead_watchers_cleaner_latency_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} dead_watchers_cleaner_latency",
@@ -3676,7 +3676,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "add_dead_watcher_stall_time{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "add_dead_watcher_stall_time{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} add_dead_watcher_stall_time",
@@ -3776,7 +3776,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "outstanding_requests{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "outstanding_requests{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} outstanding_requests",
@@ -3862,21 +3862,21 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "last_client_response_size{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "last_client_response_size{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} last_client_response_size",
               "refId": "A"
             },
             {
-              "expr": "min_client_response_size{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "min_client_response_size{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} min_client_response_size",
               "refId": "B"
             },
             {
-              "expr": "max_client_response_size{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "max_client_response_size{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} max_client_response_size",
@@ -3962,7 +3962,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "bytes_received_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "bytes_received_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} bytes_received_count",
@@ -4048,7 +4048,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "connection_request_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "connection_request_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} connection_request_count",
@@ -4134,7 +4134,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "num_alive_connections{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "num_alive_connections{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{'{{instance}}'}} num_alive_connections",
@@ -4220,7 +4220,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "connection_rejected{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "connection_rejected{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} connection_rejected",
@@ -4306,7 +4306,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "connection_drop_count{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "connection_drop_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} connection_drop_count",
@@ -4392,7 +4392,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "connection_drop_probability{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "connection_drop_probability{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} connection_drop_probability",
@@ -4478,7 +4478,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sessionless_connections_expired{instance=~\"$instance\",job=~\"$job\"}",
+              "expr": "sessionless_connections_expired{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} sessionless_connections_expired",
@@ -4564,7 +4564,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(connection_token_deficit_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+              "expr": "rate(connection_token_deficit_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{'{{instance}}'}} connection_token_deficit",
@@ -4672,7 +4672,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "pluginVersion": "6.2.2",
       "targets": [
         {
-          "expr": "open_file_descriptor_count{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "open_file_descriptor_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}}",
@@ -4725,7 +4725,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "fsynctime{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "fsynctime{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
@@ -4733,7 +4733,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "A"
         },
         {
-          "expr": "fsynctime_count{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "fsynctime_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "hide": true,
           "interval": "",
@@ -4742,7 +4742,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "B"
         },
         {
-          "expr": "fsynctime_sum{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "fsynctime_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
@@ -4750,7 +4750,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "C"
         },
         {
-          "expr": "fsynctime_sum * 1000 /fsynctime_count{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "fsynctime_sum * 1000 /fsynctime_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -4758,7 +4758,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "D"
         },
         {
-          "expr": "irate(fsynctime_sum{instance=~\"$instance\",job=~\"$job\"}[1m])",
+          "expr": "irate(fsynctime_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[1m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -4849,7 +4849,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(snapshottime_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(snapshottime_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -4857,7 +4857,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "C"
         },
         {
-          "expr": "snapshottime_count{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "snapshottime_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
@@ -4865,7 +4865,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "A"
         },
         {
-          "expr": "snapshottime_sum / snapshottime_count{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "snapshottime_sum / snapshottime_count{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
@@ -4965,7 +4965,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(prep_process_time_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(prep_process_time_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{'{{instance}}'}} prep_process_time",
@@ -5051,7 +5051,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(prep_processor_queue_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(prep_processor_queue_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{'{{instance}}'}} prep_processor_queue_time_ms",
@@ -5137,7 +5137,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(prep_processor_queue_size_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(prep_processor_queue_size_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} prep_processor_queue_size",
@@ -5223,7 +5223,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "prep_processor_request_queued{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "prep_processor_request_queued{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} prep_processor_request_queued",
@@ -5309,14 +5309,14 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "outstanding_changes_queued{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "outstanding_changes_queued{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} outstanding_changes_queued",
           "refId": "A"
         },
         {
-          "expr": "outstanding_changes_removed{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "outstanding_changes_removed{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} outstanding_changes_removed",
@@ -5402,7 +5402,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(close_session_prep_time_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(close_session_prep_time_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} close_session_prep_time",
@@ -5502,7 +5502,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(sync_process_time_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(sync_process_time_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} sync_process_time",
@@ -5588,7 +5588,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(sync_processor_queue_flush_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(sync_processor_queue_flush_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} sync_processor_queue_flush_time",
@@ -5674,7 +5674,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(sync_processor_queue_size_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(sync_processor_queue_size_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} sync_processor_queue_size",
@@ -5760,7 +5760,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sync_processor_request_queued{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "sync_processor_request_queued{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} sync_processor_request_queued",
@@ -5846,7 +5846,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(sync_processor_batch_size_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(sync_processor_batch_size_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} sync_processor_batch_size",
@@ -5945,21 +5945,21 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(commit_process_time_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(commit_process_time_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} commit_process_time",
           "refId": "C"
         },
         {
-          "expr": "rate(read_commitproc_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(read_commitproc_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} read_commitproc_time",
           "refId": "A"
         },
         {
-          "expr": "rate(write_commitproc_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(write_commitproc_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} write_commitproc_time",
@@ -6045,21 +6045,21 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(write_commit_proc_req_queued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(write_commit_proc_req_queued_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} write_commit_proc_req_queued",
           "refId": "C"
         },
         {
-          "expr": "rate(read_commit_proc_req_queued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(read_commit_proc_req_queued_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} read_commit_proc_req_queued",
           "refId": "A"
         },
         {
-          "expr": "rate(commit_commit_proc_req_queued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(commit_commit_proc_req_queued_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} commit_commit_proc_req_queued",
@@ -6145,7 +6145,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(requests_in_session_queue_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(requests_in_session_queue_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} requests_in_session_queue",
@@ -6231,14 +6231,14 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(read_commit_proc_issued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(read_commit_proc_issued_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} read_commit_proc_issued",
           "refId": "C"
         },
         {
-          "expr": "rate(write_commit_proc_issued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(write_commit_proc_issued_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} write_commit_proc_issued",
@@ -6324,7 +6324,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(concurrent_request_processing_in_commit_processor_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(concurrent_request_processing_in_commit_processor_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} concurrent_request_processing_in_commit_processor",
@@ -6410,7 +6410,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(time_waiting_empty_pool_in_commit_processor_read_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(time_waiting_empty_pool_in_commit_processor_read_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -6497,7 +6497,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(pending_session_queue_size_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(pending_session_queue_size_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} pending_session_queue_size",
@@ -6583,7 +6583,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(local_write_committed_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(local_write_committed_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} local_write_committed_time_ms",
@@ -6669,7 +6669,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(server_write_committed_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(server_write_committed_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} server_write_committed_time",
@@ -6755,7 +6755,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(write_batch_time_in_commit_processor_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(write_batch_time_in_commit_processor_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -6842,7 +6842,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(reads_after_write_in_session_queue_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(reads_after_write_in_session_queue_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{'{{instance}}'}} reads_after_write_in_session_queue",
@@ -6928,7 +6928,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(session_queues_drained_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(session_queues_drained_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} session_queues_drained",
@@ -7014,7 +7014,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(reads_issued_from_session_queue_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(reads_issued_from_session_queue_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} reads_issued_from_session_queue",
@@ -7100,7 +7100,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "request_commit_queued{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "request_commit_queued{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{'{{instance}}'}} request_commit_queued",
@@ -7199,7 +7199,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(write_final_proc_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(write_final_proc_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} write_final_proc_time_ms",
@@ -7285,7 +7285,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(read_final_proc_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(read_final_proc_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} read_final_proc_time_ms",
@@ -7384,7 +7384,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(readlatency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(readlatency_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} readlatency",
@@ -7472,7 +7472,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(updatelatency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(updatelatency_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} updatelatency",
@@ -7560,14 +7560,14 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "max_latency{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "max_latency{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} max_latency",
           "refId": "A"
         },
         {
-          "expr": "min_latency{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "min_latency{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -7575,7 +7575,7 @@ This will make graph legends display the pod name instead of IP and port informa
           "refId": "B"
         },
         {
-          "expr": "avg_latency{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "avg_latency{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} avg_latency",
@@ -7661,7 +7661,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(proposal_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(proposal_latency_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} proposal_latency",
@@ -7747,7 +7747,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(quorum_ack_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(quorum_ack_latency_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} quorum_ack_latency",
@@ -7833,7 +7833,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(ack_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(ack_latency_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} ack_latency_sum",
@@ -7919,7 +7919,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(propagation_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(propagation_latency_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} propagation_latency",
@@ -8005,7 +8005,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(commit_propagation_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(commit_propagation_latency_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} commit_propagation_latency",
@@ -8091,7 +8091,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "proposal_ack_creation_latency{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "proposal_ack_creation_latency{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} proposal_ack_creation_latency-{{'{{quantile}}'}}",
@@ -8190,14 +8190,14 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "tls_handshake_exceeded{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "tls_handshake_exceeded{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} tls_handshake_exceeded",
           "refId": "C"
         },
         {
-          "expr": "outstanding_tls_handshake{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "outstanding_tls_handshake{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} outstanding_tls_handshake",
@@ -8283,21 +8283,21 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "ensemble_auth_fail{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "ensemble_auth_fail{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} ensemble_auth_fail",
           "refId": "A"
         },
         {
-          "expr": "ensemble_auth_success{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "ensemble_auth_success{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} ensemble_auth_success",
           "refId": "B"
         },
         {
-          "expr": "ensemble_auth_skip{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "ensemble_auth_skip{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} ensemble_auth_skip",
@@ -8420,7 +8420,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(jvm_classes_loaded{instance=~\"$instance\",job=~\"$job\"})",
+          "expr": "max(jvm_classes_loaded{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -8504,7 +8504,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(jvm_threads_current{instance=~\"$instance\",job=~\"$job\"})",
+          "expr": "max(jvm_threads_current{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -8588,7 +8588,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "tableColumn": "",
       "targets": [
         {
-          "expr": "max(jvm_threads_deadlocked{instance=~\"$instance\",job=~\"$job\"})",
+          "expr": "max(jvm_threads_deadlocked{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -8648,7 +8648,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(jvm_pause_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(jvm_pause_time_ms_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} jvm_pause_time_ms",
@@ -8734,7 +8734,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(jvm_gc_collection_seconds_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
+          "expr": "rate(jvm_gc_collection_seconds_sum{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} gc:{{'{{gc}}'}}",
@@ -8820,7 +8820,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jvm_threads_state{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "jvm_threads_state{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} state:{{'{{state}}'}}",
@@ -8906,7 +8906,7 @@ This will make graph legends display the pod name instead of IP and port informa
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jvm_memory_pool_bytes_used{instance=~\"$instance\",job=~\"$job\"}",
+          "expr": "jvm_memory_pool_bytes_used{{{ CONTEXT }}=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{'{{instance}}'}} pool:{{'{{pool}}'}}",
