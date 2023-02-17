@@ -92,7 +92,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, exported_namespace, topic)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -188,7 +188,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(  pulsar_subscription_msg_rate_out{      cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, namespace, topic, subscription)",
+          "expr": "sum(  pulsar_subscription_msg_rate_out{      cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, exported_namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -283,7 +283,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, exported_namespace, topic)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -381,7 +381,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(  pulsar_subscription_msg_throughput_out{    cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, namespace, topic, subscription)",
+          "expr": "sum(  pulsar_subscription_msg_throughput_out{    cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, exported_namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -479,7 +479,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -489,7 +489,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "subscriptions",
@@ -498,7 +498,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "consumers",
@@ -596,7 +596,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_subscription_back_log{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic, subscription)",
+          "expr": "sum(pulsar_subscription_back_log{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, exported_namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -693,7 +693,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_subscription_delayed{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic, subscription)",
+          "expr": "sum(pulsar_subscription_delayed{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, exported_namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -791,7 +791,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, exported_namespace, topic)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -891,7 +891,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100*sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)/sum(pulsar_storage_backlog_quota_limit{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "100*sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, exported_namespace, topic)/sum(pulsar_storage_backlog_quota_limit{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, exported_namespace, topic)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -992,7 +992,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_offloaded_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "sum(pulsar_storage_offloaded_size{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, exported_namespace, topic)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1089,7 +1089,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_replication_rate_in{cluster=~\"$cluster\", namespace=~\"$namespace\", remote_cluster!=\"local\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
+          "expr": "sum(pulsar_replication_rate_in{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", remote_cluster!=\"local\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1184,7 +1184,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_replication_rate_out{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_replication_rate_out{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1279,7 +1279,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_replication_backlog{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
+          "expr": "sum(pulsar_replication_backlog{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1392,7 +1392,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1402,7 +1402,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1412,7 +1412,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1422,7 +1422,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1432,7 +1432,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1442,7 +1442,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1452,7 +1452,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1463,7 +1463,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "100 - 200 ms",
@@ -1472,7 +1472,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "200 ms - 1 s",
@@ -1481,7 +1481,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1579,7 +1579,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1589,7 +1589,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1599,7 +1599,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1609,7 +1609,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1619,7 +1619,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1629,7 +1629,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1639,7 +1639,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1649,7 +1649,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1659,7 +1659,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1753,7 +1753,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_write_rate{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_storage_write_rate{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1849,7 +1849,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_read_rate{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_storage_read_rate{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1955,9 +1955,9 @@
         "multi": true,
         "name": "namespace",
         "options": [],
-        "query": "pulsar_storage_size{namespace=~\".+\",cluster=~\"$cluster\"}",
+        "query": "pulsar_storage_size{exported_namespace=~\".+\",cluster=~\"$cluster\"}",
         "refresh": 2,
-        "regex": "/.*namespace=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*exported_namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -1983,7 +1983,7 @@
         "multi": true,
         "name": "topic",
         "options": [],
-        "query": "pulsar_storage_size{topic=~\".+\",namespace=~\"$namespace\",cluster=~\"$cluster\"}",
+        "query": "pulsar_storage_size{topic=~\".+\",exported_namespace=~\"$namespace\",cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/.*topic=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
