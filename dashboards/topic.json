@@ -1114,7 +1114,7 @@
         "options": [],
         "query": "{topic=~\".+\"}",
         "refresh": 2,
-        "regex": "/.*topic=\\\"([^\\\"]+)\\\".*/",
+        "regex": ".*topic=\\\"(?!.*__.*)([^\\\"]+)\\\".*",
         "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
