@@ -16,7 +16,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1588939992919,
   "links": [],
   "panels": [
     {
@@ -47,9 +46,7 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
+      "options": {},
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -65,9 +62,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Logs Rate",
       "tooltip": {
         "shared": true,
@@ -76,33 +71,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -115,6 +101,10 @@
       },
       "id": 4,
       "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
         "showLabels": false,
         "showTime": true,
         "sortOrder": "Descending",
@@ -122,17 +112,16 @@
       },
       "targets": [
         {
-          "expr": "{component=\"$component\", cluster=\"$cluster\", app=\"pulsar\"}",
+          "expr": "{component=\"$component\", cluster=\"$cluster\", app=\"pulsar\"} |~ \"$level\"",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Logs",
       "type": "logs"
     }
   ],
-  "schemaVersion": 22,
+  "refresh": false,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -144,7 +133,6 @@
         "definition": "jvm_memory_bytes_used{component=~\".+\"}",
         "hide": 0,
         "includeAll": false,
-        "index": -1,
         "label": "Component",
         "multi": false,
         "name": "component",
@@ -155,7 +143,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -167,7 +154,6 @@
         "definition": "jvm_memory_bytes_used{cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
-        "index": -1,
         "label": "Cluster",
         "multi": false,
         "name": "cluster",
@@ -178,10 +164,52 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": [
+            "ERROR"
+          ],
+          "value": [
+            "ERROR"
+          ]
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "level",
+        "multi": true,
+        "name": "level",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": true,
+            "text": "ERROR",
+            "value": "ERROR"
+          },
+          {
+            "selected": false,
+            "text": "WARN",
+            "value": "WARN"
+          },
+          {
+            "selected": false,
+            "text": "INFO",
+            "value": "INFO"
+          }
+        ],
+        "query": "ERROR, WARN, INFO",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
@@ -206,8 +234,5 @@
   "timezone": "",
   "title": "Pulsar Logs",
   "uid": "AIPqpE3Zk",
-  "variables": {
-    "list": []
-  },
   "version": 1
 }
